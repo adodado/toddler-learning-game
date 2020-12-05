@@ -1,0 +1,16 @@
+{
+	"name": "Nurine Igrice",
+	"short_name": "Nurine Igrice",
+	"start_url": "/",
+	"lang": "bs-BA",
+	"display": "fullscreen",
+	"background_color": "#fcf9e7",
+	"theme_color": "#fcf9e7",
+	"icons": [
+		{
+			"src": "images/icons/app.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	]
+}
