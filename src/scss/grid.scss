@@ -1,0 +1,91 @@
+/* ----------
+- Grid SCSS
+---------- */
+
+.container {
+	--grid-cols: 3;
+	--grid-padding: 1rem;
+	--max-grid-width: 100%;
+	animation: reveal 600ms cubic-bezier(0.55, 0.34, 0, 1.66);
+	margin: var(--grid-padding) auto;
+	max-width: var(--max-grid-width);
+	width: 80vw;
+
+	@media ($bp-s) {
+		--max-grid-width: 70%;
+		--grid-padding: 1.5rem;
+	}
+
+	@media ($bp-m) {
+		--max-grid-width: 90%;
+	}
+
+	@media ($bp-l) {
+		--max-grid-width: 110rem;
+	}
+}
+
+.grid {
+	display: grid;
+	grid-gap: var(--grid-padding);
+	grid-template-columns: repeat(var(--grid-cols), 1fr);
+	perspective: 1000px;
+	width: 100%;
+
+	&__item {
+		backface-visibility: visible;
+		border-radius: 10%;
+		outline: 1px solid transparent; // Fixes anti-aliasing in Firefox
+		position: relative;
+		transform-origin: 50% 50% 0;
+
+		&_pulse {
+			animation: 500ms pulse;
+			z-index: 1;
+		}
+	}
+
+	// Set CSS variable depending on the grid size
+	&-12 {
+		@media ($bp-s) {
+			--grid-cols: 4;
+		}
+
+		@media ($bp-m) {
+			--grid-cols: 6;
+		}
+	}
+
+	&-16 {
+		@media ($bp-s) {
+			--grid-cols: 4;
+		}
+
+		@media ($bp-m) {
+			--grid-cols: 8;
+			--max-grid-width: 95%;
+		}
+
+		@media ($bp-l) {
+			--grid-cols: 8;
+			--max-grid-width: 110rem;
+		}
+	}
+
+	&-20 {
+		@media ($bp-s) {
+			--grid-cols: 5;
+			--max-grid-width: 80%;
+		}
+
+		@media ($bp-m) {
+			--grid-cols: 5;
+			--max-grid-width: 60rem;
+		}
+
+		@media ($bp-l) {
+			--grid-cols: 5;
+			--max-grid-width: 60rem;
+		}
+	}
+}

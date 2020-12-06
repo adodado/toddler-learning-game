@@ -7,14 +7,14 @@ import {store} from "./../entry.js";
 
 export default class SelectGame extends Component {
 	setGame(game) {
-		store.dispatch(actionSetGame(game));
+		store.dispatch(actionSetGame(game.val.toLowerCase()));
 		store.dispatch(actionDisableActive());
 
 		// Start new game
-		newGame(game);
+		newGame(game.val.toLowerCase());
 
 		// Use speech synthesis API to narrate game title (if sound is enabled)
-		speech(game);
+		speech(game.text.toLowerCase());
 	}
 
 	render() {
@@ -28,7 +28,7 @@ export default class SelectGame extends Component {
 				<div class="game-container">
 					{games.map((item) => {
 						return (
-							<button class="btn btn-game" onClick={() => this.setGame(item.val.toLowerCase(), sound)}>
+							<button class="btn btn-game" onClick={() => this.setGame(item, sound)}>
 								<div class={`game-select game-select_${item.val.toLowerCase()}`} />
 								{item.text}
 							</button>

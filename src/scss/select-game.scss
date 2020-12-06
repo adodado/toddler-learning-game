@@ -1,0 +1,71 @@
+/* ----------
+- Select game SCSS
+---------- */
+
+.heading {
+	font-range: 25rem 75rem;
+	font-size: responsive 30px 55px;
+	margin: 0 0 1.5rem;
+	text-align: center;
+}
+
+.select-container {
+	animation: reveal 600ms cubic-bezier(0.55, 0.34, 0, 1.66);
+	margin: auto;
+	width: 90%;
+}
+
+.game {
+	&-container {
+		--grid-cols: 2;
+		display: grid;
+		grid-gap: 1.5rem;
+		grid-template-columns: repeat(var(--grid-cols), 1fr);
+		margin: auto;
+		max-width: 600px;
+		width: 75%;
+
+		@media ($bp-s) {
+			--grid-cols: 4;
+		}
+	}
+
+	&-select {
+		border-radius: 100%;
+		padding-top: 100%;
+		position: relative;
+		width: 100%;
+
+		&_animals {
+			background-image: url("./../images/animals/horse.jpg");
+			background-size: 100%;
+		}
+
+		&_colours {
+			background-color: #ffa025;
+
+			&::before {
+				background: radial-gradient(ellipse farthest-corner at left top, #fff 0%, rgba(255, 255, 255, 0) 100%);
+				border-radius: 100%;
+				content: "";
+				height: 100%;
+				left: 0;
+				opacity: 0.75;
+				position: absolute;
+				top: 0;
+				width: 100%;
+			}
+		}
+
+		&_numbers {
+			background-image: url("./../images/select/numbers.png");
+			background-size: 100%;
+		}
+
+		&_shapes {
+			background-color: #edc7a6;
+			background-image: url("./../images/select/star.svg");
+			background-size: 100%;
+		}
+	}
+}
