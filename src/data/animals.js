@@ -21,7 +21,7 @@ export const animals = {
 			val: "Cow"
 		},
 		{
-			text: "Rakovica",
+			text: "Rak",
 			val: "Crab"
 		},
 		{

@@ -2,6 +2,10 @@ export const actionToggleSound = () => ({
 	type: "TOGGLE-SOUND"
 });
 
+export const actionToggleBabyMode = () => ({
+	type: "TOGGLE-BABY-MODE"
+});
+
 export const actionSetGame = (game) => ({
 	type: "SET-GAME",
 	value: game

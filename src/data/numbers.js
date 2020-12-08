@@ -1,8 +1,8 @@
 export const numbers = {
 	data: [
 		{
-			text: 0,
-			val: 0,
+			text: 10,
+			val: 10,
 			hex: "ffcaca"
 		},
 		{

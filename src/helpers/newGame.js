@@ -58,6 +58,7 @@ export default function newGame(game = null, size = 12, firstLevel = true) {
 		gridData.push({
 			data: pair,
 			flipped: true,
+			disabled: false,
 			pulse: false,
 			colour: `#${(Math.random() * 0x666666 + 0x666666).toString(16).substring(0, 6)}`, // Randomly generated tile colour
 			angle: number % 2 === 0 ? `transform: rotate(${random(-1.5, 0, true)}deg);` : `transform: rotate(${random(0, 1.5, true)}deg);` // Randomise angle tile item is displayed at

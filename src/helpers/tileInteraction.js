@@ -1,5 +1,6 @@
 import {actionSetGridData, actionSetCurrentTile, actionToggleActive, actionChangeCompletedTileCount, actionToggleStageOver} from "../redux/actions/game";
 import {actionBackToHome} from "../redux/actions/global";
+import {disableTile} from "../helpers/disableTile";
 import newGame from "../helpers/newGame";
 import playAudio from "../helpers/playAudio";
 import {store} from "./../entry.js";
@@ -11,7 +12,7 @@ export function tileInteraction(value, element) {
 
 	if (active) {
 		const {gridData, gridSize, currentTile, completed} = store.getState().game,
-			{sound, selectedGame} = store.getState().global;
+			{sound, selectedGame, gameMode} = store.getState().global;
 
 		// Show selected tile
 		gridData[element.id].flipped = true;
@@ -67,7 +68,13 @@ export function tileInteraction(value, element) {
 					for (const tile of pairs) {
 						tilePulse(parseInt(tile.id));
 					}
-
+					if (gameMode !== 0) {
+						console.log(gridData);
+						console.log(pairs);
+						for (const tile of pairs) {
+							disableTile(parseInt(tile.id));
+						}
+					}
 					// Reset the state for the next go
 					store.dispatch(actionToggleActive());
 					store.dispatch(actionSetCurrentTile(null));

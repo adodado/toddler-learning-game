@@ -24,17 +24,29 @@ export default class Tile extends Component {
 	}
 
 	render() {
-		const {id, data, colour, angle, flipped, pulse} = this.props;
+		const {gameMode} = this.props.global;
+
+		console.log("gameMode: ", gameMode);
+		const {id, data, colour, angle, flipped, disabled, pulse} = this.props;
+
 		let backFlippedCss = "",
 			frontFlippedCss = "",
-			pulseCss = "";
+			pulseCss = "",
+			disableCss = "";
 
-		// Set CSS classes to use if tile is flipped
-		if (flipped) {
+		if (gameMode !== 0) {
 			backFlippedCss = " tile_back-flipped";
 			frontFlippedCss = " tile_front-flipped";
 		}
 
+		// Set CSS classes to use if tile is flipped
+		if (flipped && gameMode === 0) {
+			backFlippedCss = " tile_back-flipped";
+			frontFlippedCss = " tile_front-flipped";
+		}
+		if (disabled) {
+			disableCss = " tile_disabled";
+		}
 		// Set CSS class to use if the tile should pulse
 		if (pulse) {
 			pulseCss = " grid__item_pulse";
@@ -47,7 +59,7 @@ export default class Tile extends Component {
 
 		return (
 			<div id={id} data-value={data.text} class={`grid__item${pulseCss}`} onClick={() => this.revealTile()}>
-				<div class="tile-wrapper" style={angle}>
+				<div class={`tile-wrapper${disableCss}`} style={angle}>
 					<div class={`tile tile_back${backFlippedCss}`} style={{borderColor: `${colour}`}}>
 						<svg class="tile__logo" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
 							<path
