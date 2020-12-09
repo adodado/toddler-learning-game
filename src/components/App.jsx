@@ -38,14 +38,14 @@ export default class App extends Component {
 		} else {
 			output = (
 				<div>
-					<ButtonHome />
-					<ButtonSound />
+					<div class="mode-container">
+						<ButtonHome />
+						<ButtonBabyMode />
+						<ButtonSound />
+					</div>
 					{selectedGame === null ? <SelectGame /> : <GridContainer />}
 					<LevelCompleteContainer />
 					<Audio />
-					<div class="mode-container">
-						<ButtonBabyMode />
-					</div>
 				</div>
 			);
 		}
