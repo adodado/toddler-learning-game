@@ -17,16 +17,12 @@ export default class Tile extends Component {
 			tileInteraction(value, this.base);
 
 			// Use speech synthesis API to narrate tile label (if sound is enabled)
-			console.log("revealTile: this.base: ", this.base);
-			console.log("revealTile: ", value);
 			speech(value);
 		}
 	}
 
 	render() {
 		const {gameMode} = this.props.global;
-
-		console.log("gameMode: ", gameMode);
 		const {id, data, colour, angle, flipped, disabled, pulse} = this.props;
 
 		let backFlippedCss = "",
@@ -44,7 +40,7 @@ export default class Tile extends Component {
 			backFlippedCss = " tile_back-flipped";
 			frontFlippedCss = " tile_front-flipped";
 		}
-		if (disabled) {
+		if (disabled && gameMode !== 0) {
 			disableCss = " tile_disabled";
 		}
 		// Set CSS class to use if the tile should pulse

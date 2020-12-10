@@ -12,7 +12,7 @@ export function tileInteraction(value, element) {
 
 	if (active) {
 		const {gridData, gridSize, currentTile, completed} = store.getState().game,
-			{sound, selectedGame, gameMode} = store.getState().global;
+			{sound, selectedGame} = store.getState().global;
 
 		// Show selected tile
 		gridData[element.id].flipped = true;
@@ -32,9 +32,7 @@ export function tileInteraction(value, element) {
 					value: value
 				})
 			);
-			if (gameMode !== 0) {
-				disableTile(parseInt(element.id));
-			}
+			disableTile(parseInt(element.id));
 		} else if (currentTile.tile !== element) {
 			// If the two selected tiles do not match
 			if (element.dataset.value.toString() !== currentTile.value.toString()) {
@@ -70,13 +68,7 @@ export function tileInteraction(value, element) {
 					// Update pulse state
 					for (const tile of pairs) {
 						tilePulse(parseInt(tile.id));
-					}
-					if (gameMode !== 0) {
-						console.log(gridData);
-						console.log(pairs);
-						for (const tile of pairs) {
-							disableTile(parseInt(tile.id));
-						}
+						disableTile(parseInt(tile.id));
 					}
 					// Reset the state for the next go
 					store.dispatch(actionToggleActive());
