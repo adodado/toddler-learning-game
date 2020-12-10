@@ -32,6 +32,9 @@ export function tileInteraction(value, element) {
 					value: value
 				})
 			);
+			if (gameMode !== 0) {
+				disableTile(parseInt(element.id));
+			}
 		} else if (currentTile.tile !== element) {
 			// If the two selected tiles do not match
 			if (element.dataset.value.toString() !== currentTile.value.toString()) {
