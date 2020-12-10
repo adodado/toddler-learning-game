@@ -117,6 +117,6 @@
 		"no-eol-whitespace": true,
 		"no-extra-semicolons": true,
 		"order/order": ["custom-properties", "declarations"],
-		"order/properties-alphabetical-order": true
+		"order/properties-alphabetical-order": null
 	}
 }

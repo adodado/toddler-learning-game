@@ -1,8 +1,6 @@
 import {h, Component} from "preact";
 import Audio from "./Audio";
-import ButtonBabyMode from "./ButtonBabyMode";
-import ButtonHome from "./ButtonHome";
-import ButtonSound from "./ButtonSound";
+import GameToolbar from "./GameToolbar";
 import GridContainer from "../containers/Grid";
 import LevelCompleteContainer from "../containers/LevelComplete";
 import LoaderContainer from "../containers/Loader";
@@ -38,11 +36,7 @@ export default class App extends Component {
 		} else {
 			output = (
 				<div>
-					<div class="mode-container">
-						<ButtonHome />
-						<ButtonBabyMode />
-						<ButtonSound />
-					</div>
+					<GameToolbar />
 					{selectedGame === null ? <SelectGame /> : <GridContainer />}
 					<LevelCompleteContainer />
 					<Audio />
