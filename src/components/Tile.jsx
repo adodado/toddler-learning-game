@@ -6,6 +6,8 @@ import {tilePulse} from "../helpers/tilePulse";
 
 export default class Tile extends Component {
 	revealTile() {
+		// console.log("Tile clicked!");
+		// console.log("Tile props: ", this.props);
 		const {flipped} = this.props,
 			{active} = this.props.game;
 

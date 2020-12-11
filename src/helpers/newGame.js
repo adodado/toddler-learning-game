@@ -91,11 +91,12 @@ export default function newGame(game = null, size = 12, firstLevel = true) {
 			return value;
 		});
 
+		// console.log("New game grid data: ", gridData);
 		// Fire only if user hasn't immediately returned to the home screen
 		if (store.getState().global.selectedGame !== null) {
 			// Play swoosh sound effect
 			playAudio("swooshes");
-
+			// console.log("Starting game!");
 			// Update state to start game
 			store.dispatch(actionToggleActive());
 			store.dispatch(actionSetGridData(gridData));

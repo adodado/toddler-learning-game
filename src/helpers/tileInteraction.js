@@ -1,5 +1,5 @@
 import {actionSetGridData, actionSetCurrentTile, actionToggleActive, actionChangeCompletedTileCount, actionToggleStageOver} from "../redux/actions/game";
-import {actionBackToHome} from "../redux/actions/global";
+//import {actionBackToHome} from "../redux/actions/global";
 import {disableTile} from "../helpers/disableTile";
 import newGame from "../helpers/newGame";
 import playAudio from "../helpers/playAudio";
@@ -90,15 +90,16 @@ export function tileInteraction(value, element) {
 						// Allow animations to fire before setting next game
 						setTimeout(() => {
 							// If player has yet to complete the largest grid, level up
+							newGame(selectedGame, gridSize, false);
 							// eslint-disable-next-line no-warning-comments
 							// TODO: There is an issue here where if the gridsize is larger than 12 all added tiles are not rendered correctly.
-							if (gridSize !== 20) {
-								newGame(selectedGame, gridSize, false);
-							//	newGame(selectedGame, gridSize + 4, false);
-							} else {
-								// Game over - return to home screen
-								store.dispatch(actionBackToHome());
-							}
+							// if (gridSize !== 20) {
+							// //	newGame(selectedGame, gridSize, false);
+							// 	newGame(selectedGame, gridSize + 4, false);
+							// } else {
+							// 	// Game over - return to home screen
+							// 	store.dispatch(actionBackToHome());
+							// }
 						}, 3000);
 					}
 				}, 500);
